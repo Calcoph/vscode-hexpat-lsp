@@ -23,7 +23,9 @@
     "languages": [
       {
         "id": "hexpat",
-        "extensions": [".hexpat", ".pat"]
+        "aliases": ["Hexpat", "hexpat"],
+        "extensions": [".hexpat", ".pat"],
+        "configuration": "./language-configuration.json"
       }
     ],
     "configuration": {
