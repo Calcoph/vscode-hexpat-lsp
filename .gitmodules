@@ -1,0 +1,3 @@
+[submodule "hexpat-lsp"]
+	path = hexpat-lsp
+	url = https://github.com/Calcoph/hexpat-lsp.git
