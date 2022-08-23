@@ -42,7 +42,7 @@ let client: LanguageClient;
 
 export async function activate(context: ExtensionContext) {
     const traceOutputChannel = window.createOutputChannel("Hexpat Language Server trace");
-    const command = process.env.SERVER_PATH || "hexpat-language-server";
+    const command = process.env.HEXPAT_SERVER_PATH || "hexpat-language-server";
     const run: Executable = {
         command,
         options: {

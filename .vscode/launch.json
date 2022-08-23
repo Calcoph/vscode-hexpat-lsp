@@ -18,7 +18,7 @@
         "script": "watch"
       },
       "env": {
-        "SERVER_PATH": "${workspaceRoot}/hexpat-lsp/target/debug/hexpat-language-server"
+        "HEXPAT_SERVER_PATH": "${workspaceRoot}/hexpat-lsp/target/debug/hexpat-language-server"
       }
     },
     // {
