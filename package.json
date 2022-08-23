@@ -47,6 +47,19 @@
           ],
           "default": "off",
           "description": "Traces the communication between VS Code and the language server."
+        },
+        "hexpat-language-server.imhexBaseFolders": {
+          "markdownDescription": "Base folders to look for when including a file. Just like ImHex",
+          "default": [
+            "~/.local/share/imhex",
+            "/usr/share/imhex",
+            "%userappdata%/imhex",
+            "%programfiles%/imhex"
+          ],
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
         }
       }
     },
