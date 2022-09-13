@@ -79,8 +79,13 @@
       },
       {
         "id": "dollar",
-        "description": "dollar operator",
+        "description": "Dollar operator",
         "superType": "variable"
+      },
+      {
+        "id": "union",
+        "description": "Union type",
+        "superType": "struct"
       }
     ],
     "semanticTokenScopes": [
@@ -99,6 +104,17 @@
           ],
           "dollar": [
             "variable.language.dollar.hexpat"
+          ],
+          "union": [
+            "entity.name.type.union",
+            "entity.name.type.result",
+            "entity.name.type",
+            "entity.name.type.numeric",
+            "entity.name.type.primitive",
+            "support.class",
+            "support.type",
+            "storage.type.primitive",
+            "storage.type"
           ]
         }
       }
