@@ -61,7 +61,7 @@
           "default": [
             "~/.local/share/imhex",
             "/usr/share/imhex",
-            "%userappdata%/imhex",
+            "%localappdata%/imhex",
             "%programfiles%/imhex"
           ],
           "type": "array",
