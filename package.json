@@ -2,7 +2,7 @@
   "name": "hexpat-language-server",
   "description": "hexpat language server",
   "license": "GPL-2.0",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "categories": [
     "Programming Languages"
   ],

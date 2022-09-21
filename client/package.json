@@ -2,7 +2,7 @@
 	"name": "hexpat-language-client",
 	"description": "VSCode part of a language server",
 	"license": "GPL-2.0",
-	"version": "0.1.0",
+	"version": "0.2.0",
 	"author": {"name": "calcoph"},
 	"publisher": "calcoph",
 	"engines": {
