@@ -5,6 +5,7 @@ Language Server Provider for ImHex's pattern language
 - [ ] Go to definition
 - [ ] Find references
 - [ ] Inlay hints
+- [ ] Completion
 
 ## Installing
 Download it from the [vscode marketplace](https://marketplace.visualstudio.com/items?itemName=calcoph.hexpat-language-server) or [releases section](https://github.com/Calcoph/vscode-hexpat-lsp/releases).
