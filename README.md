@@ -2,7 +2,9 @@ Language Server Provider for ImHex's pattern language
 
 ## Features
 - [x] Semantic syntax highlighting
-- [ ] Go to definition
+- [X] Go to definition (experimental (only on latest commit). Don't expect it to work in the following scenarios)
+    * names defined in a namespace
+    * function arguments
 - [ ] Find references
 - [ ] Inlay hints
 - [ ] Completion
