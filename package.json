@@ -4,7 +4,8 @@
   "license": "GPL-2.0",
   "version": "0.2.0",
   "categories": [
-    "Programming Languages"
+    "Programming Languages",
+    "Debuggers"
   ],
   "keywords": [
     "language-server",
@@ -117,6 +118,20 @@
             "storage.type"
           ]
         }
+      }
+    ],
+    "commands": [
+      {
+        "command": "hexpat-language-server.runOnImHex",
+        "title": "hexpat-lsp: Run on ImHex",
+        "when": "editorLangId == hexpat"
+      }
+    ],
+    "debuggers": [
+      {
+        "type": "ImHex",
+        "label": "Run on ImHex",
+        "languages": ["hexpat"]
       }
     ]
   },

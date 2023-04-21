@@ -26,7 +26,19 @@ import {
     InlayHintLabelPart,
     Location,
     ProviderResult,
+    debug,
+    DebugAdapterDescriptorFactory,
+    DebugAdapterDescriptor,
+    DebugAdapterExecutable,
+    DebugSession,
+    DebugAdapterInlineImplementation,
+    DebugAdapterServer,
+    DebugAdapter,
+    DebugProtocolMessage,
+    Event
 } from "vscode";
+
+import { LoggingDebugSession } from "vscode-debugadapter";
 
 import {
     Disposable,
@@ -36,6 +48,10 @@ import {
     ServerOptions,
     TransportKind,
 } from "vscode-languageclient/node";
+
+import {
+    AddressInfo
+} from "net";
 
 let client: LanguageClient;
 // type a = Parameters<>;
@@ -69,11 +85,13 @@ export async function activate(context: ExtensionContext) {
         },
         traceOutputChannel,
     };
-
+    
     // Create the language client and start the client.
     client = new LanguageClient("hexpat-language-server", "hexpat language server", serverOptions, clientOptions);
     activateInlayHints(context);
     client.start();
+
+    context.subscriptions.push(debug.registerDebugAdapterDescriptorFactory("ImHex", new FakeDebugFactory()));
 }
 
 export function deactivate(): Thenable<void> | undefined {
@@ -150,4 +168,22 @@ export function activateInlayHints(ctx: ExtensionContext) {
     workspace.onDidChangeTextDocument(maybeUpdater.onDidChangeTextDocument, maybeUpdater, ctx.subscriptions);
 
     maybeUpdater.onConfigChange().catch(console.error);
+}
+
+class FakeDebugFactory implements DebugAdapterDescriptorFactory {
+
+    // Just a fake debugger to make VSCode shut up about errors
+    createDebugAdapterDescriptor(session: DebugSession, executable: DebugAdapterExecutable): ProviderResult<DebugAdapterDescriptor> {
+        if (!executable) {
+			const command = "echo";
+			const args = [
+				"a",
+			];
+			const options = {};
+			executable = new DebugAdapterExecutable(command, args, options);
+		}
+
+		return executable;
+    }
+    
 }
