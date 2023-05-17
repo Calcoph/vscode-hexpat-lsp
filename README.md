@@ -8,7 +8,7 @@ Language Server Provider for ImHex's pattern language
     * names defined in a namespace
 - [ ] Inlay hints
 - [ ] Completion
-- [ ] Run code on imhex
+- [X] Run code on imhex
 
 ## Installing
 Download it from the [vscode marketplace](https://marketplace.visualstudio.com/items?itemName=calcoph.hexpat-language-server) or [releases section](https://github.com/Calcoph/vscode-hexpat-lsp/releases).
