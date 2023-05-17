@@ -1,13 +1,14 @@
 Language Server Provider for ImHex's pattern language
 
 ## Features
-- [x] Semantic syntax highlighting
+- [X] Semantic syntax highlighting
 - [X] Go to definition (Experimental. Don't expect it to work in the following scenarios)
     * names defined in a namespace
 - [X] Find references (Experimental. Don't expect it to work in the following scenarios)
     * names defined in a namespace
 - [ ] Inlay hints
 - [ ] Completion
+- [ ] Run code on imhex
 
 ## Installing
 Download it from the [vscode marketplace](https://marketplace.visualstudio.com/items?itemName=calcoph.hexpat-language-server) or [releases section](https://github.com/Calcoph/vscode-hexpat-lsp/releases).

@@ -131,7 +131,20 @@
       {
         "type": "ImHex",
         "label": "Run on ImHex",
-        "languages": ["hexpat"]
+        "languages": ["hexpat"],
+        "initialConfigurations": [
+          {
+            "type": "ImHex",
+            "name": "Launch",
+            "request": "launch",
+            "preLaunchTask": "imhex-task: Run On Imhex"
+          }
+        ]
+      }
+    ],
+    "taskDefinitions": [
+      {
+        "type": "imhex-task"
       }
     ]
   },

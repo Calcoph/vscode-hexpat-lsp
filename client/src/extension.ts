@@ -10,20 +10,12 @@ import {
     EventEmitter,
     ExtensionContext,
     window,
-    commands,
-    ViewColumn,
-    WebviewPanel,
-    WorkspaceEdit,
-    Selection,
-    Uri,
     InlayHintsProvider,
     TextDocument,
     CancellationToken,
     Range,
     InlayHint,
     TextDocumentChangeEvent,
-    Position,
-    InlayHintLabelPart,
     Location,
     ProviderResult,
     debug,
@@ -31,11 +23,11 @@ import {
     DebugAdapterDescriptor,
     DebugAdapterExecutable,
     DebugSession,
-    DebugAdapterInlineImplementation,
-    DebugAdapterServer,
-    DebugAdapter,
-    DebugProtocolMessage,
-    Event
+    Event,
+    Task,
+    tasks,
+    ShellExecution,
+    TaskDefinition,
 } from "vscode";
 
 import { LoggingDebugSession } from "vscode-debugadapter";
@@ -57,6 +49,7 @@ let client: LanguageClient;
 // type a = Parameters<>;
 
 export async function activate(context: ExtensionContext) {
+    //Write to output.
     const traceOutputChannel = window.createOutputChannel("Hexpat Language Server trace");
     const command = process.env.HEXPAT_SERVER_PATH || "hexpat-language-server";
     const run: Executable = {
@@ -186,4 +179,48 @@ class FakeDebugFactory implements DebugAdapterDescriptorFactory {
 		return executable;
     }
     
+}
+
+interface ImHexTaskDefinition extends TaskDefinition {
+  /**
+   * The task name
+   */
+  task: string;
+}
+
+let taksPromise: Thenable<Task[]> | undefined = undefined;
+tasks.registerTaskProvider('imhex-task', {
+    provideTasks: () => {
+      if (!taksPromise) {
+        taksPromise = getTasks();
+      }
+      return taksPromise;
+    },
+    resolveTask(_task: Task): Task | undefined {
+      return undefined;
+    }
+});
+
+async function getTasks(): Promise<Task[]> {
+	const workspaceFolders = workspace.workspaceFolders;
+	const result: Task[] = [];
+	if (!workspaceFolders || workspaceFolders.length === 0) {
+		return result;
+	}
+	for (const workspaceFolder of workspaceFolders) {
+		const folderString = workspaceFolder.uri.fsPath;
+		if (!folderString) {
+			continue;
+		}
+
+        const taskName = "Run On Imhex";
+        const kind: ImHexTaskDefinition = {
+            type: 'imhex-task',
+            task: taskName
+        };
+
+        const task = new Task(kind, workspaceFolder, taskName, 'imhex-task', new ShellExecution("${command:hexpat-language-server.runOnImHex} ${file}"));
+        result.push(task);
+	}
+	return result;
 }
