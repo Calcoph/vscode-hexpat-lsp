@@ -2,7 +2,7 @@
   "name": "hexpat-language-server",
   "description": "hexpat language server",
   "license": "GPL-2.0",
-  "version": "0.2.0",
+  "version": "0.2.3",
   "categories": [
     "Programming Languages",
     "Debuggers"
@@ -58,17 +58,22 @@
           "description": "Traces the communication between VS Code and the language server."
         },
         "hexpat-language-server.imhexBaseFolders": {
-          "markdownDescription": "Base folders to look for when including a file. Just like ImHex",
+          "markdownDescription": "Base folders to look for when including a file. Just like ImHex.",
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
           "default": [
             "~/.local/share/imhex",
             "/usr/share/imhex",
             "%localappdata%/imhex",
             "%programfiles%/imhex"
-          ],
-          "type": "array",
-          "items": {
-            "type": "string"
-          }
+          ]
+        },
+        "hexpat-language-server.imhexPort": {
+          "markdownDescription": "Port in which imhex listens if `Enable network interface` is on.",
+          "type": "number",
+          "default": 31337
         }
       }
     },
