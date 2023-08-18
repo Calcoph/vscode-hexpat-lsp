@@ -92,6 +92,16 @@
         "id": "union",
         "description": "Union type",
         "superType": "struct"
+      },
+      {
+        "id": "boolean",
+        "description": "Boolean",
+        "superType": "number"
+      },
+      {
+        "id": "punctuation",
+        "description": "Punctuation",
+        "superType": "operator"
       }
     ],
     "semanticTokenScopes": [
@@ -121,6 +131,12 @@
             "support.type",
             "storage.type.primitive",
             "storage.type"
+          ],
+          "boolean": [
+            "constant.language.bool"
+          ],
+          "punctuation": [
+            "punctuation"
           ]
         }
       }
